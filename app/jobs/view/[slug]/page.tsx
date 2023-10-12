@@ -9,7 +9,7 @@ export async function generateMetadata({searchParams} : {searchParams?: { [key: 
       title: `Referral Request for ${data.title}`,
       description: `Please refer me to ${data.company}`,
       openGraph: {
-        images: `https://www.lynkedout.com/api/og?job=${job}`
+        images: `https://www.lynkedout.com/api/og?job=${data.id}`
       },
     }
 }

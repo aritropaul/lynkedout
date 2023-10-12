@@ -9,14 +9,15 @@ import * as cheerio from 'cheerio';
 export async function getDetails(id: string) {
 
     let cleanID = id.match(/(\d){10}/g) ?? []
-    const url = 'https://www.linkedin.com/jobs/view/'+cleanID
+    const url = 'https://www.linkedin.com/jobs/view/'+cleanID[0]
     const res = await fetch(url, {
         next: { revalidate: 60 }, // Revalidate every 60 seconds
     })
     const data = await res.text()
+
     const $ = cheerio.load(data)
     var job = {
-        id: cleanID,
+        id: cleanID[0],
         title: '',
         company: '',
         link: '',
@@ -31,5 +32,7 @@ export async function getDetails(id: string) {
         // console.log($('div.decorated-job-posting__details').find('.compensation__salary-range').html())
         job['pay'] = $('div.decorated-job-posting__details').find('.compensation__salary-range').find('.salary').text().trim()
     }
+
+    console.log(job)
     return job
 }
