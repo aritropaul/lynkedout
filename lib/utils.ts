@@ -6,8 +6,9 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 import * as cheerio from 'cheerio';
-
 export async function getDetails(id: string) {
+
+
     const url = 'https://www.linkedin.com/jobs/view/'+id
     const res = await fetch(url, {
         next: { revalidate: 60 }, // Revalidate every 60 seconds

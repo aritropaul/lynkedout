@@ -1,10 +1,14 @@
 import { getDetails } from "@/lib/utils"
+import { useRouter } from "next/navigation"
 
-export async function generateMetadata({ params }: { params: { slug: string, link: string } }) {
+export async function generateMetadata({searchParams} : {searchParams?: { [key: string]: string }}) {
+
+    const job = searchParams?.currentJobId
+
     return {
       title: `Referral Request`,
       openGraph: {
-        images: `https://www.lynkedout.com/api/og?job=${params.link}`
+        images: `https://www.lynkedout.com/api/og?job=${job}`
       },
     }
 }
