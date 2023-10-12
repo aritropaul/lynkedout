@@ -4,9 +4,11 @@ import { useRouter } from "next/navigation"
 export async function generateMetadata({searchParams} : {searchParams?: { [key: string]: string }}) {
 
     const job = searchParams?.currentJobId
+    const data = await getDetails(job? job: '')
 
     return {
-      title: `Referral Request`,
+      title: `Referral Request for ${data.title}`,
+      description: `Please refer me to ${data.company}`,
       openGraph: {
         images: `https://www.lynkedout.com/api/og?job=${job}`
       },
