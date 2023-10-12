@@ -23,6 +23,6 @@ export default async function FromSearch({searchParams} : {searchParams?: { [key
     const data = await getDetails(job? job : '')
 
     return(
-        <><div> job {job}</div><div> {data.title} @ {data.company}</div></>
+        <><div> job {data.id}</div><div> {data.title} @ {data.company}</div></>
     )
 }
