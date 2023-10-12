@@ -8,14 +8,15 @@ export function cn(...inputs: ClassValue[]) {
 import * as cheerio from 'cheerio';
 export async function getDetails(id: string) {
 
-
-    const url = 'https://www.linkedin.com/jobs/view/'+id
+    let cleanID = id.match(/(\d){10}/g) ?? []
+    const url = 'https://www.linkedin.com/jobs/view/'+cleanID
     const res = await fetch(url, {
         next: { revalidate: 60 }, // Revalidate every 60 seconds
     })
     const data = await res.text()
     const $ = cheerio.load(data)
     var job = {
+        id: cleanID,
         title: '',
         company: '',
         link: '',

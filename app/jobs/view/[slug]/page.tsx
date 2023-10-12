@@ -19,6 +19,6 @@ export default async function Job({ params }: { params : {slug: string} }) {
     const job = await getDetails(params.slug)
 
     return(
-        <><div> job {params.slug}</div><div> {job.title} @ {job.company}</div></>
+        <><div> job {job.id}</div><div> {job.title} @ {job.company}</div></>
     )
 }
