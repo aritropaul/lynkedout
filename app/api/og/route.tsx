@@ -34,13 +34,13 @@ export async function GET(req: Request) {
                         <span tw="text-5xl leading-[150%] font-normal text-neutral-500 mr-3 tracking-tight"> 
                             {`I would love a referral to `}
                         </span>
-                        <span tw="text-5xl leading-[150%] font-normal tracking-tight">
+                        <span tw="text-5xl mr-3 leading-[150%] font-normal tracking-tight">
                             {data.title ?? 'Product Designer'}  
                         </span>
                         <span tw="text-5xl leading-[150%] font-normal items-center justify-center text-neutral-500 tracking-tight">
                             {`at`} 
-                            <img tw="rounded-full w-[40px] h-[40px] mx-3" src={data.img} alt='logo'></img>
-                            <span tw="text-5xl leading-[150%] text-neutral-900 font-normal tracking-tight"> {data.company ?? 'Google'}  </span>
+                            <img tw="rounded-full w-[40px] h-[40px] ml-3" src={data.img} alt='logo'></img>
+                            <span tw="text-5xl ml-3 leading-[150%] text-neutral-900 font-normal tracking-tight"> {data.company ?? 'Google'}  </span>
                         </span>
                     </div>
                 </div>
