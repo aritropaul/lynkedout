@@ -1,4 +1,6 @@
+/* eslint-disable @next/next/no-img-element */
 import { getDetails } from "@/lib/utils";
+import Image from "next/image";
 import { ImageResponse } from "next/server";
 
 export const runtime = 'edge';
@@ -35,11 +37,10 @@ export async function GET(req: Request) {
                         <span tw="text-5xl leading-[150%] font-normal tracking-tight">
                             {data.title ?? 'Product Designer'}  
                         </span>
-                        <span tw="text-5xl leading-[150%] font-normal text-neutral-500 mx-3 tracking-tight">
-                            {`at`}
-                        </span>
-                        <span tw="text-5xl leading-[150%] font-normal tracking-tight">
-                            {data.company ?? 'Google'}  
+                        <span tw="text-5xl leading-[150%] font-normal items-center justify-center text-neutral-500 tracking-tight">
+                            {`at`} 
+                            <img tw="rounded-full w-[40px] h-[40px] mx-3" src={data.img} alt='logo'></img>
+                            <span tw="text-5xl leading-[150%] text-neutral-900 font-normal tracking-tight"> {data.company ?? 'Google'}  </span>
                         </span>
                     </div>
                 </div>
