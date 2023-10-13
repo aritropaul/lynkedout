@@ -1,3 +1,4 @@
+import JobLayout from "@/components/ui/JobLayout"
 import { getDetails } from "@/lib/utils"
 
 export async function generateMetadata({ params }: { params: { slug: string }}) {
@@ -20,6 +21,6 @@ export default async function Job({ params }: { params : {slug: string} }) {
     const job = await getDetails(params.slug)
 
     return(
-        <><div> job {job.id}</div><div> {job.title} @ {job.company}</div></>
+        <JobLayout job={job}></JobLayout>
     )
 }
