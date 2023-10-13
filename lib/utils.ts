@@ -45,7 +45,7 @@ export async function getDetails(id: string) {
         job['pay'] = $('div.decorated-job-posting__details').find('.compensation__salary-range').find('.salary').text().trim()
     }
     else {
-        let pay = $('div.description__text').text().match(/\$\d{1,3}(,?\d{3})*—\$\d{1,3}(,?\d{3})* USD/g)
+        let pay = $('div.description__text').text().match(/(\$((\d{1,3}),?(\d{1,3})K?))( ?)(-?|—?)( ?)(\$((\d{1,3}),?(\d{1,3})K?) ?(USD)?)/g)
         job['pay'] = pay? pay[0] : ''
     }
     const crit = $('li.description__job-criteria-item').toArray().map(function(x){ return {'key': $(x).find('h3').text().trim(), 'value': $(x).find('span').text().trim() }})
