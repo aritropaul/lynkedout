@@ -23,7 +23,7 @@ export default function JobLayout(props: {job : JobProps}) {
     const router = useRouter()
 
     return (
-        <main className="flex flex-col items-start justify-start p-24">
+        <main className="flex flex-col items-start justify-start p-8 md:p-12 lg:p-24">
             <Header></Header>
             <Image className="rounded-lg" src={props.job.img} width={32} height={32} alt='logo'></Image>
             <div className="flex flex-row items-center justify-center">
@@ -38,7 +38,7 @@ export default function JobLayout(props: {job : JobProps}) {
                 {props.job.pay}
             </div>
             }
-            <div className="flex flex-row gap-2">
+            <div className="flex flex-col md:flex-row my-4 md:my-0 gap-2">
                 {
                     props.job.tags.map((item: {key: string, value: string}) => {
                         return(<div className="text-[10px] font-medium px-2 py-1 rounded-full text-neutral-500 bg-neutral-100 w-fit uppercase tracking-wider" key={item.key}>{item.value}</div>)
