@@ -33,10 +33,15 @@ export async function getDetails(id: string) {
     }
 
     job['title'] = $('h1.topcard__title').text()
-    job['desc'] = $('div.show-more-less-html__markup').contents().filter(function() {
+    let desc = $('div.show-more-less-html__markup').contents().filter(function() {
         return this.type === 'text';
-    }).eq(0).text().trim();
-
+    }).eq(0).text().trim(); 
+    if (desc.length == 0) {
+        desc = $('div.show-more-less-html__markup').contents().filter(function() {
+            return this.type === 'text';
+        }).eq(1).text().trim(); 
+    }
+    job['desc'] = desc
     job['company'] = $('a.topcard__org-name-link').text().trim()
     job['link'] = $('a.topcard__org-name-link').attr('href') ?? ''
     job['img'] = $('div.top-card-layout__card').find('a').find('.artdeco-entity-image').attr('data-delayed-url') ?? ''
@@ -53,6 +58,6 @@ export async function getDetails(id: string) {
     job['time'] = $('span.posted-time-ago__text').text().trim()
 
 
-    console.log(job)
+    // console.log(job)
     return job
 }
