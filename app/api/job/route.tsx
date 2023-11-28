@@ -3,7 +3,7 @@ import { NextResponse } from 'next/server';
  
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
-  const job = searchParams.get('job');
+  const job = searchParams.get('currentJobId') || searchParams.get('job');
   let cleanID = job? job.match(/(\d){10}/g) : []
  
   try {
