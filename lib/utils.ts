@@ -12,6 +12,7 @@ import * as cheerio from 'cheerio';
 
 export async function getDetails(id: string) {
     let cleanID = id? id.match(/(\d){10}/g) : []
+    console.log(cleanID)
     const url = 'https://www.linkedin.com/jobs/view/'+ (cleanID? cleanID[0] : '')
     const res = await fetch(url, {
         next: { revalidate: 60 }, // Revalidate every 60 seconds
